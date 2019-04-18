@@ -1,29 +1,30 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, FlatList} from 'react-native';
 
 class EmojiDict extends Component {
-    state = {
-        '😃': '😃 Smiley',
-        '🚀': '🚀 Rocket',
-        '⚛︎': '⚛︎ Atom symbol'
-    };
-
     render() {
         return (
-          <View style = {styles.container}>
-              <Text>{this.state['😃']}</Text>
-              <Text>{this.state['🚀']}</Text>
-          </View>
+            <FlatList
+                contentContainerStyle={styles.container}
+                data={[
+                    { key: '😃', value: '😃 Smiley' },
+                    { key: '🚀', value: '🚀 Rocket' },
+                    { key: '⚛️', value: '⚛️ Atom Symbol' }
+                ]}
+                renderItem={({ item }) => <Text>{item.value}</Text>}
+            />
         );
     }
 }
 
 const styles = StyleSheet.create({
-   container: {
-       flex: 1,
-       justifyContent: 'center',
-       alignItems: 'center'
-   }
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
 });
+
+
 
 export default EmojiDict;
